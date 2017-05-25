@@ -20,7 +20,8 @@ function finalizaCompra(){
 
    if(!navigator.onLine) {
     alert('Fique online para realizar o pagamento!');
-    $('form button').attr('disabled', 'disabled')
+    $('form button').attr('disabled', 'disabled');
+    return false;
   } else {
 
     Materialize.toast('Só testes, não enviei o cartão, claro', 4000);
@@ -35,9 +36,11 @@ function finalizaCompra(){
 
     var notification = new Notification('Pagamento confirmado! Saída liberada até ' + saida.getHours() + 'h' + ("0" + (saida.getMinutes() + 1)).slice(-2), options);
     setTimeout(n.close.bind(notification), 2500); 
+
+    return false;
   }
 
   
 
-	return false;
+	
 }
