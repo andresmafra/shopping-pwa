@@ -5,6 +5,15 @@
 
  */
 
+
+if(!!window.location.href.match('pagar-estacionamento')) {
+   if(!navigator.onLine) {
+  alert('Fique online para realizar o pagamento!');
+  $('form button').attr('disabled', 'disabled')
+}
+}
+
+
 $('body').on('submit', 'form', finalizaCompra);
 
 function finalizaCompra(){
@@ -14,14 +23,12 @@ function finalizaCompra(){
   var now = new Date();
   var saida = new Date(now.getTime() + 1000 * 60 * 15);
 
-  alert('Pagamento confirmado! Saída liberada até ' + saida.getHours() + 'h' + ("0" + (saida.getMinutes() + 1)).slice(-2));
+  var options = {
+      icon: 'img/icon.png',
+  }
 
-  /*
-
-    Desafio: troque o alert acima pelo uso da Notifications API
-
-  */
-
+  var notification = new Notification('Pagamento confirmado! Saída liberada até ' + saida.getHours() + 'h' + ("0" + (saida.getMinutes() + 1)).slice(-2), options);
+  setTimeout(n.close.bind(notification), 2500); 
 
 	return false;
 }

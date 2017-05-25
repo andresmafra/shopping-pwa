@@ -7,12 +7,13 @@
 
  */
 
- $('a').on('click', function(e) {
+$('body').on('click', 'a', function(e) {
      e.preventDefault();
-     var link = $(this).attr('href')
+
+     var link = $(this).attr('href');
 
      $('.current-page').load(link + ' .current-page' , function() {
-          history.pushState({}, {}, e.target.href);
+          history.pushState({}, {}, link);
     });
  });
 
