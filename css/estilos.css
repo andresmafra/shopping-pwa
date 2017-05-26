@@ -1,6 +1,7 @@
 /*
     Use esse arquivo para escrever seu CSS extra
  */
- .parallax img {
+
+.parallax img {
     display: block !important;
 }
